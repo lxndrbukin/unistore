@@ -1,6 +1,4 @@
-E-commerce Website created using the following:
-
-<p>A simple E-commerce app created using the following:</p>
+<p>E-commerce Website created using the following::</p>
 <ul>
   <li><a target='_blank' href='https://react.dev/'><b>React</b></a> for the Frontend</li>
   <li><a target='_blank' href='https://redux-toolkit.js.org/'><b>Redux Toolkit</b></a> for app state management</li>
