@@ -9,5 +9,5 @@ export default function App(): JSX.Element {
     dispatch(getProducts());
   }, []);
 
-  return <div>App</div>;
+  return <div className='container'>App</div>;
 }
