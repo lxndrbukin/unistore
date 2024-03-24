@@ -1,9 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CatalogProps } from './types';
+import { Product } from '@chec/commerce.js/types/product';
+import { Category } from '@chec/commerce.js/types/category';
 import { getProducts } from '../thunks/getProducts';
+import { getCategories } from '../thunks/getCategories';
 
 const initialState: CatalogProps = {
-  products: []
+  products: [],
+  categories: []
 };
 
 const catalogSlice = createSlice({
@@ -11,8 +15,11 @@ const catalogSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder): void => {
-    builder.addCase(getProducts.fulfilled, (state, action) => {
+    builder.addCase(getProducts.fulfilled, (state: CatalogProps, action: PayloadAction<Array<Product>>): void => {
       state.products = action.payload;
+    });
+    builder.addCase(getCategories.fulfilled, (state: CatalogProps, action: PayloadAction<Array<Category>>): void => {
+      state.categories = action.payload;
     });
   }
 });

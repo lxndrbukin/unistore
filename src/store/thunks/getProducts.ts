@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import commerce from '../../lib/commerce';
 
 export const getProducts = createAsyncThunk('catalog/getProducts', async () => {

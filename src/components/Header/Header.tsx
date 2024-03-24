@@ -8,7 +8,8 @@ export default function Header(): JSX.Element {
       </div>
       <ul className='header-links'>
         <li>Categories</li>
-        <li>Categories</li>
+        <li>Deals</li>
+        <li>What's New</li>
       </ul>
     </header>
   );
