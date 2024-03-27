@@ -1,0 +1,26 @@
+@import '../../../assets/variables.scss';
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    width: 100%;
+    max-width: $max-width;
+
+    .header-links {
+      display: flex;
+
+      .header-link {
+        position: relative;
+
+        .header-menu-dropdown {
+          .header-menu-dropdown-links {
+          }
+        }
+      }
+    }
+  }
+}

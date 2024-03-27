@@ -1,16 +1,12 @@
-import { Link } from 'react-router-dom';
+import HeaderMenu from './HeaderMenu';
 
 export default function Header(): JSX.Element {
   return (
-    <header className='header-container'>
-      <div className='header'>
+    <header className="header-container">
+      <div className="header">
         <span>UniSTORE</span>
       </div>
-      <ul className='header-links'>
-        <li>Categories</li>
-        <li>Deals</li>
-        <li>What's New</li>
-      </ul>
+      <HeaderMenu />
     </header>
   );
 }
