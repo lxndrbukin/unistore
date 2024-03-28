@@ -7,19 +7,52 @@
   align-items: center;
 
   .header {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: $spacing-xl;
+    align-items: center;
     width: 100%;
     max-width: $max-width;
 
-    .header-links {
-      display: flex;
+    .header-logo {
+      font-weight: bold;
+      display: inline-block;
+      user-select: none;
+    }
 
-      .header-link {
+    .header-menu-links {
+      padding: 0;
+      list-style-type: none;
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(3, max-content);
+      gap: $spacing-xl;
+      font-weight: bold;
+
+      .header-menu-link {
         position: relative;
+        cursor: pointer;
+        height: fit-content;
+        color: $dark;
 
-        .header-menu-dropdown {
-          .header-menu-dropdown-links {
-          }
+        a {
+          height: fit-content;
+          text-decoration: none;
+          color: $dark;
         }
+
+        span {
+          display: grid;
+          grid-template-columns: repeat(2, max-content);
+          gap: $spacing-sm;
+          align-items: center;
+        }
+
+        .header-menu-dropdown-links {
+          position: absolute;
+          top: 20px;
+        }
+
       }
     }
   }

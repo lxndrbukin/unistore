@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, getProducts, getCategories } from '../store';
+import Header from './Header/Header';
 
 export default function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -10,5 +11,9 @@ export default function App(): JSX.Element {
     dispatch(getCategories());
   }, [dispatch]);
 
-  return <div className='container'>App</div>;
+  return (
+    <div className='container'>
+      <Header />
+    </div>
+  );
 }
