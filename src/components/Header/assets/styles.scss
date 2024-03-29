@@ -13,49 +13,66 @@
     align-items: center;
     width: 100%;
     max-width: $max-width;
+    height: 100%;
+    position: relative;
 
     .header-logo {
       font-weight: bold;
       display: inline-block;
       user-select: none;
+      color: $dark-blue;
+      font-size: 1.5rem;
+      text-decoration: none;
     }
 
-    .header-menu-links {
-      padding: 0;
-      list-style-type: none;
-      display: grid;
-      align-items: center;
-      grid-template-columns: repeat(3, max-content);
-      gap: $spacing-xl;
-      font-weight: bold;
-      font-size: 0.9rem;
+    .header-menu {
+      .header-menu-links {
+        padding: 0;
+        list-style-type: none;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(3, max-content);
+        gap: $spacing-xl;
+        font-weight: bold;
+        font-size: 0.9rem;
 
-      .header-menu-link {
-        position: relative;
-        cursor: pointer;
-        height: fit-content;
-        color: $dark;
-
-        a {
+        .header-menu-link {
+          position: relative;
+          cursor: pointer;
           height: fit-content;
-          text-decoration: none;
           color: $dark;
-        }
-
-        span {
-          display: grid;
-          grid-template-columns: repeat(2, max-content);
-          gap: $spacing-sm;
+          display: flex;
           align-items: center;
-        }
 
-        .header-menu-dropdown-links {
-          position: absolute;
-          top: 20px;
-          list-style-type: none;
-          padding: 0;
-        }
+          &:hover {
+            color: $dark-blue;
+          }
 
+          a {
+            height: fit-content;
+            text-decoration: none;
+            color: $dark;
+
+            &:hover {
+              color: $dark-blue;
+            }
+          }
+
+        }
+      }
+
+      .header-menu-dropdown-links {
+        position: absolute;
+        top: 50px;
+        list-style-type: none;
+        padding: 0;
+        background-color: $white;
+        width: $max-width;
+        left: 0;
+        min-height: 300px;
+        box-shadow: $box-shadow;
+        border-radius: 0 0 4px 4px;
+        margin: 0;
       }
     }
 
@@ -66,11 +83,13 @@
       border: 2px solid transparent;
       border-radius: 7px;
       justify-self: center;
+      width: 230px;
 
       input {
         border: none;
         background-color: transparent;
         padding: $spacing-md;
+        width: 100%;
 
         &:focus {
           outline: none;
@@ -99,12 +118,63 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+
+        .header-user-menu-profile-dropdown {
+          min-width: 250px;
+          border: 1px solid $light-grey;
+          border-radius: 4px;
+          box-shadow: $box-shadow;
+          position: absolute;
+          top: 32px;
+          right: 0;
+          padding: $spacing-lg;
+          box-sizing: border-box;
+          background-color: $white;
+
+          .header-user-menu-profile-data {
+            text-decoration: none;
+            color: $dark;
+            display: flex;
+            align-items: center;
+            gap: $spacing-md;
+            background-color: $light-grey;
+            padding: $spacing-md;
+            border-radius: 4px;
+
+            span {
+              font-size: 0.9rem;
+            }
+          }
+
+          .header-user-menu-profile-links {
+            list-style-type: none;
+            margin: 0;
+            padding: $spacing-md 0;
+
+
+            .header-user-menu-profile-link {
+              a {
+                text-decoration: none;
+                color: $dark;
+                display: flex;
+                align-items: center;
+                gap: $spacing-md;
+
+                svg {
+                  color: $dark-blue;
+                }
+              }
+            }
+          }
+        }
       }
 
       .header-user-menu-cart {
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
       }
     }
   }

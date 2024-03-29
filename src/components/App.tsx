@@ -14,6 +14,7 @@ export default function App(): JSX.Element {
   return (
     <div className='container'>
       <Header />
+      <main className='main-body'></main>
     </div>
   );
 }
