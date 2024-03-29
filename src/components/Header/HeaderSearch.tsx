@@ -5,7 +5,7 @@ export default function HeaderSearch(): JSX.Element {
     <form className='header-search-form'>
       <input type='text' name='search' placeholder='Search Product' />
       <button>
-        <FiSearch />
+        <FiSearch size={18} />
       </button>
     </form>
   );

@@ -1,6 +1,7 @@
 import './assets/styles.scss';
 import HeaderMenu from './HeaderMenu';
 import HeaderSearch from './HeaderSearch';
+import HeaderUserMenu from './HeaderUserMenu';
 
 export default function Header(): JSX.Element {
   return (
@@ -9,6 +10,7 @@ export default function Header(): JSX.Element {
         <span className='header-logo'>UniSTORE</span>
         <HeaderMenu />
         <HeaderSearch />
+        <HeaderUserMenu />
       </div>
     </header>
   );
