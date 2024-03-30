@@ -13,8 +13,13 @@ export default function HeaderMenu(): JSX.Element {
   return (
     <nav className='header-menu'>
       <ul className='header-menu-links'>
-        <li onMouseOver={onMouseEvent} className='header-menu-link'>
+        <li
+          onMouseEnter={onMouseEvent}
+          onMouseLeave={onMouseEvent}
+          className='header-menu-link'
+        >
           Categories <BiChevronDown size={19} />
+          {isVisible && <HeaderMenuDropdown />}
         </li>
         <li className='header-menu-link'>
           <Link to='/new-products'>What's New</Link>
@@ -23,7 +28,6 @@ export default function HeaderMenu(): JSX.Element {
           <Link to='/deals'>Deals</Link>
         </li>
       </ul>
-      {isVisible && <HeaderMenuDropdown />}
     </nav>
   );
 }
