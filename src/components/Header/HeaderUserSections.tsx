@@ -5,7 +5,7 @@ import HeaderUserCart from './HeaderUserCart';
 
 export default function HeaderUserSections(): JSX.Element {
   return (
-    <div className="header-user-menu">
+    <div className="header-user-sections">
       <HeaderUserSection icon={PiUserCircle} children={<HeaderUserMenu />} />
       <HeaderUserSection icon={PiShoppingCart} children={<HeaderUserCart />} />
     </div>

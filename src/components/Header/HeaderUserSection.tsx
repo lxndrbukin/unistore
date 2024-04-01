@@ -10,20 +10,37 @@ export default function HeaderUserSection({
 
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, []);
 
-  const headerUserMenuDropdown = (
-    <div ref={dropdownRef} className="header-user-menu-dropdown">
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (
+      iconRef &&
+      !iconRef.current?.contains(e.target as Element) &&
+      !dropdownRef.current?.contains(e.target as Element)
+    ) {
+      setIsVisible(false);
+    }
+  };
+
+  const headerUserSectionDropdown = (
+    <div ref={dropdownRef} className="header-user-section-dropdown">
       {children}
     </div>
   );
 
   return (
-    <div className="header-user-menu-section">
-      <div ref={iconRef} className="header-user-menu-icon">
+    <div className="header-user-section">
+      <div
+        ref={iconRef}
+        onClick={() => setIsVisible(!isVisible)}
+        className="header-user-section-icon"
+      >
         {icon({ size: 28 })}
       </div>
-      {isVisible && headerUserMenuDropdown}
+      {isVisible && headerUserSectionDropdown}
     </div>
   );
 }

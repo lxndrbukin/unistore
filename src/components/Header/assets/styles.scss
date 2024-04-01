@@ -112,18 +112,18 @@
       }
     }
 
-    .header-user-menu {
+    .header-user-sections {
       display: grid;
       grid-template-columns: repeat(2, max-content);
       align-items: center;
 
-      .header-user-menu-section {
+      .header-user-section {
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
 
-        .header-user-menu-icon {
+        .header-user-section-icon {
           height: 50px;
           width: 50px;
           display: flex;
@@ -136,7 +136,7 @@
           }
         }
 
-        .header-user-menu-profile-dropdown {
+        .header-user-section-dropdown {
           min-width: 250px;
           border: 1px solid $light-grey;
           border-radius: 4px;
@@ -148,48 +148,56 @@
           box-sizing: border-box;
           background-color: $white;
 
-          .header-user-menu-profile-data {
-            text-decoration: none;
-            color: $dark;
-            display: flex;
-            align-items: center;
-            gap: $spacing-md;
-            background-color: $light-grey;
-            padding: $spacing-md;
-            border-radius: 4px;
+          .header-user-menu {
+            .header-user-menu-data {
+              text-decoration: none;
+              color: $dark;
+              display: flex;
+              align-items: center;
+              gap: $spacing-md;
+              background-color: $light-grey;
+              padding: $spacing-md;
+              border-radius: 4px;
 
-            span {
-              font-size: 0.9rem;
+              span {
+                font-size: 0.9rem;
+              }
             }
-          }
 
-          .header-user-menu-profile-links {
-            list-style-type: none;
-            margin: 0;
-            padding: $spacing-md 0;
+            .header-user-menu-links {
+              list-style-type: none;
+              margin: 0;
+              padding: $spacing-md 0;
 
-            .header-user-menu-profile-link {
-              a {
-                text-decoration: none;
-                color: $dark;
-                display: flex;
-                align-items: center;
-                gap: $spacing-md;
+              .header-user-menu-link {
+                a {
+                  text-decoration: none;
+                  color: $dark;
+                  display: flex;
+                  align-items: center;
+                  gap: $spacing-md;
 
-                svg {
-                  color: $dark-blue;
+                  svg {
+                    color: $dark-blue;
+                  }
                 }
               }
             }
           }
-        }
-      }
 
-      .header-user-menu-cart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
+          .header-user-cart {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+
+            span {
+              width: fit-content;
+              color: $dark-grey;
+            }
+          }
+        }
       }
     }
   }
