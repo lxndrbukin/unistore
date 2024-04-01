@@ -1,5 +1,11 @@
-import { RefObject } from 'react';
+import { RefObject, ReactNode } from 'react';
+import { IconType } from 'react-icons';
 
-export interface HeaderMenuDropdownProps {
+export interface HeaderUserMenuDropdownProps {
+  ref: RefObject<HTMLDivElement>;
+}
 
+export interface HeaderUserMenuSectionProps {
+  icon: IconType;
+  children: ReactNode;
 }

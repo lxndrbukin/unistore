@@ -115,14 +115,26 @@
     .header-user-menu {
       display: grid;
       grid-template-columns: repeat(2, max-content);
-      gap: $spacing-lg;
       align-items: center;
 
-      .header-user-menu-profile {
+      .header-user-menu-section {
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
+
+        .header-user-menu-icon {
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $light-grey;
+          }
+        }
 
         .header-user-menu-profile-dropdown {
           min-width: 250px;
@@ -130,7 +142,7 @@
           border-radius: 4px;
           box-shadow: $box-shadow;
           position: absolute;
-          top: 32px;
+          top: 50px;
           right: 0;
           padding: $spacing-lg;
           box-sizing: border-box;
@@ -155,7 +167,6 @@
             list-style-type: none;
             margin: 0;
             padding: $spacing-md 0;
-
 
             .header-user-menu-profile-link {
               a {
