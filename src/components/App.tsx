@@ -12,9 +12,9 @@ export default function App(): JSX.Element {
   }, [dispatch]);
 
   return (
-    <div className='container'>
+    <div className="container">
       <Header />
-      <main className='main-body'></main>
+      <main className="main-body"></main>
     </div>
   );
 }

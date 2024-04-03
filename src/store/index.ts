@@ -13,3 +13,4 @@ export type AppDispatch = typeof store.dispatch;
 export * from './slices/catalogSlice';
 export * from './thunks/getProducts';
 export * from './thunks/getCategories';
+export * from './thunks/getCategory';
