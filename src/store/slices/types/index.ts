@@ -4,4 +4,7 @@ import { Category } from '@chec/commerce.js/types/category';
 export interface CatalogProps {
   products: Array<Product>;
   categories: Array<Category>;
+  filter: {
+    search: string;
+  };
 }

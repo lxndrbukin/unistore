@@ -4,17 +4,23 @@ import { Product } from '@chec/commerce.js/types/product';
 import { Category } from '@chec/commerce.js/types/category';
 import { getProducts } from '../thunks/getProducts';
 import { getCategories } from '../thunks/getCategories';
-import { getCategory } from '../thunks/getCategory';
 
 const initialState: CatalogProps = {
   products: [],
   categories: [],
+  filter: {
+    search: '',
+  },
 };
 
 const catalogSlice = createSlice({
   name: 'catalog',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearch(state: CatalogProps, action: PayloadAction<string>): void {
+      state.filter.search = action.payload;
+    },
+  },
   extraReducers: (builder): void => {
     builder.addCase(
       getProducts.fulfilled,
@@ -32,3 +38,4 @@ const catalogSlice = createSlice({
 });
 
 export default catalogSlice.reducer;
+export const { setSearch } = catalogSlice.actions;
