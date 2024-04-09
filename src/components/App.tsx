@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, getProducts, getCategories } from '../store';
 import Header from './Header/Header';
@@ -14,7 +15,9 @@ export default function App(): JSX.Element {
   return (
     <div className="container">
       <Header />
-      <main className="main-body"></main>
+      <main className="main-body">
+        <Outlet />
+      </main>
     </div>
   );
 }
