@@ -1,0 +1,25 @@
+@import '../../../assets/variables.scss';
+
+.products {
+  height: 100%;
+
+  .products-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: $white;
+
+    .products-grid-item {
+      width: 100;
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+      .products-grid-item-line {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

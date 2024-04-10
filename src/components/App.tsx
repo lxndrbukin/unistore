@@ -15,8 +15,10 @@ export default function App(): JSX.Element {
   return (
     <div className="container">
       <Header />
-      <main className="main-body">
-        <Outlet />
+      <main className="main">
+        <div className="main-body">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
