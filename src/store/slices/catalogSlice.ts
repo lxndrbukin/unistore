@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { CatalogProps } from './types';
+import { Slices, CatalogProps } from './types';
 import { Product } from '@chec/commerce.js/types/product';
 import { Category } from '@chec/commerce.js/types/category';
 import { getProducts } from '../thunks/getProducts';
@@ -14,7 +14,7 @@ const initialState: CatalogProps = {
 };
 
 const catalogSlice = createSlice({
-  name: 'catalog',
+  name: Slices.Catalog,
   initialState,
   reducers: {
     setSearch(state: CatalogProps, action: PayloadAction<string>): void {

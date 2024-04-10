@@ -8,9 +8,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: $white;
+    padding: $spacing-xl;
+    box-sizing: border-box;
 
     .products-grid-item {
       width: 100;
+      height: fit-content;
+      box-shadow: $box-shadow;
+      padding: $spacing-lg;
+      display: grid;
+      grid-template-rows: min-content;
 
       img {
         width: 200px;
@@ -19,6 +26,30 @@
       .products-grid-item-line {
         display: flex;
         justify-content: space-between;
+        margin: $spacing-md 0;
+        font-weight: bold;
+      }
+
+      button {
+        background-color: transparent;
+        border-radius: 50%;
+        border: 2px solid $dark-blue;
+        height: 40px;
+        width: 40px;
+        justify-self: right;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: $dark-blue;
+          color: $white;
+        }
+
+        svg {
+          font-size: 24px;
+        }
       }
     }
   }

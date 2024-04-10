@@ -1,4 +1,5 @@
 import { Product } from '@chec/commerce.js/types/product';
+import { PiShoppingCart } from 'react-icons/pi';
 
 export default function ProductsGridItem({
   name,
@@ -14,6 +15,9 @@ export default function ProductsGridItem({
           {price.formatted_with_symbol}
         </span>
       </div>
+      <button>
+        <PiShoppingCart />
+      </button>
     </div>
   );
 }
