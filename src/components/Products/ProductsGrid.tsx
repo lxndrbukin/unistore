@@ -6,8 +6,8 @@ export default function ProductsGrid({
   products,
 }: ProductsGridProps): JSX.Element {
   const renderedGrid = products.map((product: Product): JSX.Element => {
-    return <ProductsGridItem {...product} />;
+    return <ProductsGridItem key={product.id} {...product} />;
   });
 
-  return <div className="products-grid">{renderedGrid}</div>;
+  return <div className='products-grid'>{renderedGrid}</div>;
 }

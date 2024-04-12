@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $white;
 
   .header {
     display: flex;
@@ -68,7 +69,8 @@
         position: absolute;
         top: 50px;
         list-style-type: none;
-        padding: 0;
+        padding: $spacing-lg;
+        box-sizing: border-box;
         background-color: $white;
         width: $max-width;
         left: 0;

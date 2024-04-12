@@ -3,7 +3,7 @@ import commerce from '../../lib/commerce';
 
 export const getCategories = createAsyncThunk(
   'catalog/getCategories',
-  async () => {
+  async (): Promise<Array<any>> => {
     const res = await commerce.categories.list();
     return res.data;
   }

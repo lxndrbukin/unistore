@@ -7,17 +7,19 @@ export default function ProductsGridItem({
   image,
 }: Product): JSX.Element {
   return (
-    <div className="products-grid-item">
+    <div className='products-grid-item'>
       <img alt={name} src={image?.url} />
-      <div className="products-grid-item-line">
-        <span className="products-grid-item-name">{name}</span>
-        <span className="products-grid-item-price">
+      <div className='products-grid-item-line'>
+        <span className='products-grid-item-name'>{name}</span>
+      </div>
+      <div className='products-grid-item-line'>
+        <span className='products-grid-item-price'>
           {price.formatted_with_symbol}
         </span>
+        <button>
+          <PiShoppingCart />
+        </button>
       </div>
-      <button>
-        <PiShoppingCart />
-      </button>
     </div>
   );
 }
