@@ -9,7 +9,7 @@ export default function ProductsGridItem(props: Product): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = () => {
-    dispatch(addToCart(props));
+    dispatch(addToCart({ ...props, quantity: 1 }));
   };
 
   return (

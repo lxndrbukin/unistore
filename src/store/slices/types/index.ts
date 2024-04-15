@@ -30,6 +30,10 @@ export interface CatalogProps {
   };
 }
 
+export interface CartItem extends Product {
+  quantity: number;
+}
+
 export interface CartProps {
-  items: Array<Product>;
+  items: Array<CartItem>;
 }

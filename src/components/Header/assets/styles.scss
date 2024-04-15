@@ -188,15 +188,21 @@
           }
 
           .header-user-cart {
-            display: grid;
-            grid-template-columns: 1fr;
-            align-items: center;
-            justify-content: center;
-            height: 200px;
+            height: 250px;
+            overflow-y: auto;
 
-            span {
-              width: fit-content;
-              color: $dark-grey;
+            .header-user-cart-items {
+              display: grid;
+              grid-template-columns: 1fr;
+              grid-template-rows: min-content;
+
+              .header-user-cart-item {
+                .header-user-cart-item-img {
+                  width: 200px;
+                  height: 200px;
+                  object-fit: cover;
+                }
+              }
             }
           }
         }
