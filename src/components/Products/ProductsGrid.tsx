@@ -9,5 +9,5 @@ export default function ProductsGrid({
     return <ProductsGridItem key={product.id} {...product} />;
   });
 
-  return <div className='products-grid'>{renderedGrid}</div>;
+  return <div className="products-grid">{renderedGrid}</div>;
 }

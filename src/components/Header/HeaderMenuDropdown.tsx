@@ -23,10 +23,8 @@ export default function HeaderMenuDropdown(): JSX.Element {
   ): Array<JSX.Element> => {
     return category.children.map((subCategory: SubCategory): JSX.Element => {
       return (
-        <li className='header-menu-dropdown-sublink' key={subCategory.id}>
-          <Link
-            to={`/products/${category.name.toLowerCase()}/${subCategory.name.toLowerCase()}`}
-          >
+        <li className="header-menu-dropdown-sublink" key={subCategory.id}>
+          <Link to={`/products/${category.slug}/${subCategory.slug}`}>
             {subCategory.name}
           </Link>
         </li>
@@ -37,11 +35,11 @@ export default function HeaderMenuDropdown(): JSX.Element {
   const renderedCategories = categories.map(
     (category: CatalogCategory): JSX.Element => {
       return (
-        <li key={category.id} className='header-menu-dropdown-link'>
+        <li key={category.id} className="header-menu-dropdown-link">
           <Link to={`/products/${category.name.toLowerCase()}`}>
             {category.name}
           </Link>
-          <ul className='header-menu-dropdown-sublinks'>
+          <ul className="header-menu-dropdown-sublinks">
             {renderSubCategories(category)}
           </ul>
         </li>
@@ -49,5 +47,5 @@ export default function HeaderMenuDropdown(): JSX.Element {
     }
   );
 
-  return <ul className='header-menu-dropdown-links'>{renderedCategories}</ul>;
+  return <ul className="header-menu-dropdown-links">{renderedCategories}</ul>;
 }
