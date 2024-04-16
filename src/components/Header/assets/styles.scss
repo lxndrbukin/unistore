@@ -188,7 +188,8 @@
           }
 
           .header-user-cart {
-            height: 250px;
+            height: 280px;
+            width: 280px;
             overflow-y: auto;
 
             .header-user-cart-items {
@@ -197,10 +198,15 @@
               grid-template-rows: min-content;
 
               .header-user-cart-item {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: min-content;
+
                 .header-user-cart-item-img {
-                  width: 200px;
-                  height: 200px;
+                  width: 150px;
+                  height: 150px;
                   object-fit: cover;
+                  justify-self: center;
                 }
               }
             }
