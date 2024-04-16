@@ -10,6 +10,8 @@ export default function HeaderMenu(): JSX.Element {
     setIsVisible(!isVisible);
   };
 
+  const dropdownBackground = <div className='header-menu-dropdown-bg'></div>;
+
   return (
     <nav className='header-menu'>
       <ul className='header-menu-links'>
@@ -28,6 +30,7 @@ export default function HeaderMenu(): JSX.Element {
           <Link to='/deals'>Deals</Link>
         </li>
       </ul>
+      {isVisible && dropdownBackground}
     </nav>
   );
 }
