@@ -12,10 +12,11 @@ export default function HeaderUserSection({
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
-    return () => document.removeEventListener('click', handleOutsideClick);
+    return (): void =>
+      document.removeEventListener('click', handleOutsideClick);
   }, []);
 
-  const handleOutsideClick = (e: MouseEvent) => {
+  const handleOutsideClick = (e: MouseEvent): void => {
     if (
       iconRef &&
       !iconRef.current?.contains(e.target as Element) &&

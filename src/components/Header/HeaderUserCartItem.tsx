@@ -1,7 +1,8 @@
 import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppDispatch, CartItem, changeQuantity } from '../../store';
+import { AppDispatch, CartItem, changeQuantity, removeItem } from '../../store';
+import { IoTrashOutline } from 'react-icons/io5';
 
 export default function HeaderUserCartItem({
   id,
@@ -13,7 +14,7 @@ export default function HeaderUserCartItem({
 }: CartItem): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleClick = (e: MouseEvent<HTMLInputElement>): void => {
+  const handleQuantity = (e: MouseEvent<HTMLInputElement>): void => {
     const operator = (e.target as HTMLButtonElement).getAttribute('name')!;
     dispatch(
       changeQuantity({
@@ -23,9 +24,14 @@ export default function HeaderUserCartItem({
     );
   };
 
+  const handleRemove = (e: MouseEvent<HTMLButtonElement>): void => {};
+
   return (
     <div className="header-user-cart-item">
-      <Link to={`/products/${permalink}`}>
+      <Link
+        style={{ backgroundImage: image?.url }}
+        to={`/products/${permalink}`}
+      >
         <img
           className="header-user-cart-item-img"
           src={image?.url}
@@ -51,15 +57,18 @@ export default function HeaderUserCartItem({
             disabled={quantity === 1 ? true : false}
             value="-"
             name="decrement"
-            onClick={handleClick}
+            onClick={handleQuantity}
           />
           <input
             type="button"
             name="increment"
             value="+"
-            onClick={handleClick}
+            onClick={handleQuantity}
           />
         </div>
+        <button>
+          <IoTrashOutline />
+        </button>
       </div>
     </div>
   );
