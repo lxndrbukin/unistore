@@ -7,6 +7,11 @@ export enum Slices {
   Cart = 'cart',
 }
 
+export enum Operator {
+  Increment = 'increment',
+  Decrement = 'decrement',
+}
+
 export interface SubCategory {
   assets: Array<Asset>;
   id: string;

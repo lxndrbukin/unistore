@@ -7,7 +7,7 @@ import { FiSearch } from 'react-icons/fi';
 export default function HeaderSearch(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       search: { value: string };
