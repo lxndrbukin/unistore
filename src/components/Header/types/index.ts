@@ -7,5 +7,6 @@ export interface HeaderUserMenuDropdownProps {
 
 export interface HeaderUserMenuSectionProps {
   icon: IconType;
+  badge?: ReactNode;
   children: ReactNode;
 }

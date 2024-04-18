@@ -41,4 +41,5 @@ export interface CartItem extends Product {
 
 export interface CartProps {
   items: Array<CartItem>;
+  totalQuantity: number;
 }

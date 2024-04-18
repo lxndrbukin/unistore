@@ -3,6 +3,7 @@ import { HeaderUserMenuSectionProps } from './types';
 
 export default function HeaderUserSection({
   icon,
+  badge,
   children,
 }: HeaderUserMenuSectionProps): JSX.Element {
   const iconRef = useRef<HTMLDivElement>(null);
@@ -27,19 +28,20 @@ export default function HeaderUserSection({
   };
 
   const headerUserSectionDropdown = (
-    <div ref={dropdownRef} className="header-user-section-dropdown">
+    <div ref={dropdownRef} className='header-user-section-dropdown'>
       {children}
     </div>
   );
 
   return (
-    <div className="header-user-section">
+    <div className='header-user-section'>
       <div
         ref={iconRef}
         onClick={() => setIsVisible(!isVisible)}
-        className="header-user-section-icon"
+        className={`header-user-section-icon ${isVisible ? 'active' : ''}`}
       >
-        {icon({ size: 28 })}
+        {icon({ size: 32 })}
+        {badge}
       </div>
       {isVisible && headerUserSectionDropdown}
     </div>

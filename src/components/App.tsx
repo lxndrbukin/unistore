@@ -10,13 +10,14 @@ export default function App(): JSX.Element {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
+    document.title = 'uniSTORE | PCs, Laptops, Smartphones, Consoles';
   }, [dispatch]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <Header />
-      <main className="main">
-        <div className="main-body">
+      <main className='main'>
+        <div className='main-body'>
           <Outlet />
         </div>
       </main>

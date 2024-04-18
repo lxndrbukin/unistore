@@ -3,22 +3,35 @@ import { Slices, Operator, CartProps, CartItem } from './types';
 
 const initialState: CartProps = {
   items: JSON.parse(localStorage.getItem('cartItems')!) || [],
+  totalQuantity: 0
 };
 
 const cartSlice = createSlice({
   name: Slices.Cart,
   initialState,
   reducers: {
-    removeItem(state: CartProps, action: PayloadAction<{ id: string }>): void {
+    getTotalQuantity(state: CartProps): void {
+      let totalQuan = 0;
+      state.items.forEach((item: CartItem) => {
+        totalQuan = totalQuan + item.quantity;
+      });
+      state.totalQuantity = totalQuan;
+    },
+    removeItem(state: CartProps, action: PayloadAction<{ id: string; }>): void {
       const updatedList = state.items.filter(
-        (item: CartItem): boolean => item.id !== action.payload.id
+        (item: CartItem): boolean => {
+          if (item.id === action.payload.id) {
+            state.totalQuantity -= item.quantity;
+          }
+          return item.id !== action.payload.id;
+        }
       );
       localStorage.setItem('cartItems', JSON.stringify(updatedList));
       state.items = updatedList;
     },
     changeQuantity(
       state: CartProps,
-      action: PayloadAction<{ id: string; operator: string }>
+      action: PayloadAction<{ id: string; operator: string; }>
     ): void {
       if (
         state.items.some(
@@ -26,16 +39,21 @@ const cartSlice = createSlice({
         )
       ) {
         const updatedList = state.items.map((item: CartItem): CartItem => {
-          if (action.payload.operator === Operator.Increment) {
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-            };
-          } else if (action.payload.operator === Operator.Decrement) {
-            return {
-              ...item,
-              quantity: item.quantity - 1,
-            };
+          if (item.id === action.payload.id) {
+            if (action.payload.operator === Operator.Increment) {
+              state.totalQuantity += 1;
+              item = {
+                ...item,
+                quantity: item.quantity + 1
+              };
+            } else if (action.payload.operator === Operator.Decrement) {
+              state.totalQuantity -= 1;
+              item = {
+                ...item,
+                quantity: item.quantity - 1
+              };
+            }
+            return item;
           } else {
             return item;
           }
@@ -45,6 +63,7 @@ const cartSlice = createSlice({
       }
     },
     addToCart(state: CartProps, action: PayloadAction<CartItem>): void {
+      state.totalQuantity += 1;
       if (
         state.items.some(
           (item: CartItem): boolean => item.id === action.payload.id
@@ -71,4 +90,4 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const { changeQuantity, addToCart, removeItem } = cartSlice.actions;
+export const { changeQuantity, addToCart, removeItem, getTotalQuantity } = cartSlice.actions;
