@@ -1,8 +1,8 @@
-import { MouseEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, CartItem, changeQuantity, removeItem } from '../../store';
-import { IoTrashOutline } from 'react-icons/io5';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 export default function HeaderUserCartItem({
   id,
@@ -14,12 +14,13 @@ export default function HeaderUserCartItem({
 }: CartItem): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleQuantity = (e: MouseEvent<HTMLInputElement>): void => {
-    const operator = (e.target as HTMLButtonElement).getAttribute('name')!;
+  const handleQuantity = (e: ChangeEvent<HTMLSelectElement>): void => {
+    const prevQuantity = quantity;
     dispatch(
       changeQuantity({
         id,
-        operator,
+        prevQuantity,
+        newQuantity: Number(e.target.value),
       })
     );
   };
@@ -27,6 +28,16 @@ export default function HeaderUserCartItem({
   const handleRemoveItem = (): void => {
     dispatch(removeItem({ id }));
   };
+
+  const select = (
+    <select onChange={handleQuantity} defaultValue={quantity}>
+      <option value={1}>1</option>
+      <option value={2}>2</option>
+      <option value={3}>3</option>
+      <option value={4}>4</option>
+      <option value={5}>5</option>
+    </select>
+  );
 
   return (
     <div className='header-user-cart-item'>
@@ -41,36 +52,23 @@ export default function HeaderUserCartItem({
         />
       </Link>
       <div className='header-user-cart-item-info'>
-        <div className='header-user-cart-item-name'>{name}</div>
-        <div className='header-user-cart-item-quantity'>
-          Quantity: {quantity}
-        </div>
+        <Link
+          className='header-user-cart-item-name'
+          to={`/products/${permalink}`}
+        >
+          {name}
+        </Link>
       </div>
       <div className='header-user-cart-item-settings'>
-        <div className='header-user-cart-item-remove'>
-          <i className='fas fa-times'></i>
-        </div>
         <div className='header-user-cart-item-price'>
           £{price.raw * quantity}
         </div>
-        <div className='header-user-cart-item-btns'>
-          <input
-            type='button'
-            disabled={quantity === 1 ? true : false}
-            value='-'
-            name='decrement'
-            onClick={handleQuantity}
-          />
-          <input
-            type='button'
-            name='increment'
-            value='+'
-            onClick={handleQuantity}
-          />
+        <div className='header-user-cart-item-operations'>
+          {select}
+          <button onClick={handleRemoveItem}>
+            <RiDeleteBinLine />
+          </button>
         </div>
-        <button onClick={handleRemoveItem}>
-          <IoTrashOutline />
-        </button>
       </div>
     </div>
   );

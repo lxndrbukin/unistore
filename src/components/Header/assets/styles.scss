@@ -35,7 +35,7 @@
         display: grid;
         align-items: center;
         grid-template-columns: repeat(3, max-content);
-        gap: $spacing-xl;
+        gap: $spacing-md;
         font-weight: bold;
         font-size: 0.9rem;
         margin: 0;
@@ -48,6 +48,7 @@
           display: flex;
           align-items: center;
           height: 100%;
+          padding: 0 $spacing-lg;
 
           &:hover {
             color: $dark-blue;
@@ -219,7 +220,7 @@
           }
 
           .header-user-cart {
-            height: 280px;
+            height: 460px;
             width: 280px;
             overflow-y: auto;
 
@@ -232,17 +233,57 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: min-content;
+                padding: $spacing-md;
 
                 a {
                   width: fit-content;
                   justify-self: center;
 
                   .header-user-cart-item-img {
-                    width: 150px;
+                    width: 100%;
                     height: 150px;
                     object-fit: cover;
                   }
                 }
+
+                .header-user-cart-item-info {
+                  margin-bottom: $spacing-sm;
+
+                  .header-user-cart-item-name {
+                    font-weight: bold;
+                    color: $dark;
+                    text-decoration: none;
+                    font-size: 1.05rem;
+                  }
+                }
+
+                .header-user-cart-item-settings {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+
+                  .header-user-cart-item-price {
+                    font-size: 1.01rem;
+                    font-weight: bold;
+                  }
+
+                  .header-user-cart-item-operations {
+                    select {
+                      border-radius: $border-r7;
+                      border: 1px solid $dark-grey;
+                      cursor: pointer;
+                      outline: none;
+                    }
+
+                    button {
+                      cursor: pointer;
+                      border: 1px solid $dark-grey;
+                      border-radius: $border-r7;
+                      background-color: transparent;
+                    }
+                  }
+                }
+
               }
             }
           }

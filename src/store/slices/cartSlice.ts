@@ -31,36 +31,21 @@ const cartSlice = createSlice({
     },
     changeQuantity(
       state: CartProps,
-      action: PayloadAction<{ id: string; operator: string; }>
+      action: PayloadAction<{ id: string; prevQuantity: number; newQuantity: number; }>
     ): void {
-      if (
-        state.items.some(
-          (item: CartItem): boolean => item.id === action.payload.id
-        )
-      ) {
-        const updatedList = state.items.map((item: CartItem): CartItem => {
-          if (item.id === action.payload.id) {
-            if (action.payload.operator === Operator.Increment) {
-              state.totalQuantity += 1;
-              item = {
-                ...item,
-                quantity: item.quantity + 1
-              };
-            } else if (action.payload.operator === Operator.Decrement) {
-              state.totalQuantity -= 1;
-              item = {
-                ...item,
-                quantity: item.quantity - 1
-              };
-            }
-            return item;
-          } else {
-            return item;
-          }
-        });
-        localStorage.setItem('cartItems', JSON.stringify(updatedList));
-        state.items = updatedList;
-      }
+      const updatedList = state.items.map((item: CartItem): CartItem => {
+        if (item.id === action.payload.id) {
+          return {
+            ...item,
+            quantity: item.quantity - action.payload.prevQuantity + action.payload.newQuantity
+          };
+        } else {
+          return item;
+        }
+      });
+      localStorage.setItem('cartItems', JSON.stringify(updatedList));
+      state.items = updatedList;
+      state.totalQuantity = state.totalQuantity - action.payload.prevQuantity + action.payload.newQuantity;
     },
     addToCart(state: CartProps, action: PayloadAction<CartItem>): void {
       state.totalQuantity += 1;

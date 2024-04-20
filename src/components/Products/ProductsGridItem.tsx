@@ -13,17 +13,17 @@ export default function ProductsGridItem(props: Product): JSX.Element {
   };
 
   return (
-    <div className="products-grid-item">
-      <Link to={`/products/${permalink}`}>
+    <div className='products-grid-item'>
+      <Link className='products-grid-item-img' to={`/products/${permalink}`}>
         <img alt={name} src={image?.url} />
       </Link>
-      <div className="products-grid-item-line">
+      <div className='products-grid-item-line'>
         <Link to={`/products/${permalink}`}>
-          <span className="products-grid-item-name">{name}</span>
+          <span className='products-grid-item-name'>{name}</span>
         </Link>
       </div>
-      <div className="products-grid-item-line">
-        <span className="products-grid-item-price">
+      <div className='products-grid-item-line'>
+        <span className='products-grid-item-price'>
           {price.formatted_with_symbol}
         </span>
         <button onClick={handleClick}>
