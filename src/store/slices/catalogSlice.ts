@@ -29,7 +29,15 @@ const catalogSlice = createSlice({
       } else state.filter.price.max = undefined;
     },
     setSearch(state: CatalogProps, action: PayloadAction<string>): void {
-      state.filter.search = action.payload;
+      const filteredProducts = state.products.filter((product: Product) => {
+        if (product.name.toLowerCase().includes(action.payload) ||
+          product.categories.filter((category): boolean => category.name.includes(action.payload)) ||
+          product.description.toLowerCase().includes(action.payload)) {
+          return product;
+        }
+        return;
+      });
+      state.products = filteredProducts;
     },
   },
   extraReducers: (builder): void => {
