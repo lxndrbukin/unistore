@@ -9,13 +9,16 @@ import ProductsFilter from './ProductsFilter';
 export default function Products(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
   const { products } = useSelector((state: RootState) => state.catalog);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    dispatch(getProducts());
+    const search = searchParams.get('search');
+    if (search) dispatch(getProducts(search));
+    else dispatch(getProducts());
   }, []);
 
   return (
-    <div className='products'>
+    <div className="products">
       <ProductsFilter />
       <ProductsGrid products={products} />
     </div>
