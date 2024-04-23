@@ -24,6 +24,20 @@
       margin: 0 0 $spacing-md 0;
     }
 
+    .products-filter-categories {
+      .products-filter-categories-list {
+        list-style-type: none;
+        padding: 0;
+
+        .products-filter-category-wrapper {
+          .products-filter-category-subcategories {
+            list-style-type: none;
+            padding: $spacing-sm $spacing-lg;
+          }
+        }
+      }
+    }
+
     .products-filter-prices {
       .products-filter-prices-inputs {
         display: grid;
