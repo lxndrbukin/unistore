@@ -9,12 +9,5 @@ export default function ProductsGrid({
     return <ProductsGridItem key={product.id} {...product} />;
   });
 
-  return (
-    <div className="products-grid">
-      <h4 className="products-grid-header">
-        Total Found Items: {products.length}
-      </h4>
-      {renderedGrid}
-    </div>
-  );
+  return <div className="products-grid">{renderedGrid}</div>;
 }

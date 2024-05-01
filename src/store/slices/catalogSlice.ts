@@ -12,7 +12,7 @@ const initialState: CatalogProps = {
     price: {
       min: undefined,
       max: undefined,
-    }
+    },
   },
 };
 
@@ -20,7 +20,10 @@ const catalogSlice = createSlice({
   name: Slices.Catalog,
   initialState,
   reducers: {
-    setPrice(state: CatalogProps, action: PayloadAction<{ min?: number, max?: number; }>) {
+    setPrice(
+      state: CatalogProps,
+      action: PayloadAction<{ min?: number; max?: number }>
+    ) {
       if (action.payload.min) {
         state.filter.price.min = action.payload.min;
       } else state.filter.price.min = undefined;
@@ -29,15 +32,7 @@ const catalogSlice = createSlice({
       } else state.filter.price.max = undefined;
     },
     setSearch(state: CatalogProps, action: PayloadAction<string>): void {
-      const filteredProducts = state.products.filter((product: Product) => {
-        if (product.name.toLowerCase().includes(action.payload) ||
-          product.categories.filter((category): boolean => category.name.includes(action.payload)) ||
-          product.description.toLowerCase().includes(action.payload)) {
-          return product;
-        }
-        return;
-      });
-      state.products = filteredProducts;
+      state.filter.search = action.payload;
     },
   },
   extraReducers: (builder): void => {
@@ -49,7 +44,10 @@ const catalogSlice = createSlice({
     );
     builder.addCase(
       getCategories.fulfilled,
-      (state: CatalogProps, action: PayloadAction<Array<CatalogCategory>>): void => {
+      (
+        state: CatalogProps,
+        action: PayloadAction<Array<CatalogCategory>>
+      ): void => {
         state.categories = action.payload;
       }
     );

@@ -6,6 +6,7 @@ import {
   CatalogProps,
 } from '../../store';
 import ProductsFilterPriceInput from './ProductsFilterPriceInput';
+import { ChangeEvent } from 'react';
 
 export default function ProductsFilter(): JSX.Element {
   const { categories } = useSelector(
@@ -25,12 +26,22 @@ export default function ProductsFilter(): JSX.Element {
     });
   };
 
+  const checkBox = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.name);
+    console.log(e.target.checked);
+  };
+
   const renderedCategories = categories.map(
     (category: CatalogCategory): JSX.Element => {
       return (
         <li className="products-filter-category-wrapper">
           <div className="products-filter-category">
-            <input type="checkbox" id={category.slug} />
+            <input
+              onChange={checkBox}
+              type="checkbox"
+              name={category.name.toLowerCase()}
+              id={category.slug}
+            />
             <label htmlFor={category.slug}>{category.name}</label>
           </div>
           <ul className="products-filter-category-subcategories">
