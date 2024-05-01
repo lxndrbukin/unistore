@@ -6,17 +6,13 @@ export const getProducts = createAsyncThunk(
   'catalog/getProducts',
   async (search?: string) => {
     const res = await commerce.products.list();
-    if (search) {
+    if (search?.length) {
       const lowerSearch = search.toLowerCase();
       const filteredRes = res.data.filter((product: Product) => {
-        if (
-          product.name.toLowerCase().includes(lowerSearch) ||
-          product.categories.filter((category): boolean =>
-            category.name.toLowerCase().includes(lowerSearch)
-          ) ||
-          product.description.toLowerCase().includes(lowerSearch)
-        ) {
-          console.log(product);
+        if (product.name.toLowerCase().includes(lowerSearch)) {
+          console.log(product.name);
+          return product;
+        } else if (product.description.toLowerCase().includes(lowerSearch)) {
           return product;
         }
       });
