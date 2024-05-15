@@ -23,7 +23,7 @@ const catalogSlice = createSlice({
     setPrice(
       state: CatalogProps,
       action: PayloadAction<{ min?: number; max?: number }>
-    ) {
+    ): void {
       if (action.payload.min) {
         state.filter.price.min = action.payload.min;
       } else state.filter.price.min = undefined;
@@ -42,6 +42,9 @@ const catalogSlice = createSlice({
         state.products = action.payload;
       }
     );
+    builder.addCase(getProducts.pending, (state: CatalogProps): void => {
+      state.products = [];
+    });
     builder.addCase(
       getCategories.fulfilled,
       (

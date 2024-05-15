@@ -5,9 +5,15 @@ import ProductsGridItem from './ProductsGridItem';
 export default function ProductsGrid({
   products,
 }: ProductsGridProps): JSX.Element {
-  const renderedGrid = products.map((product: Product): JSX.Element => {
+  const itemLoader = <div className="products-grid-item-loader"></div>;
+
+  const loadingGrid = Array(6).fill(itemLoader);
+
+  const productsGrid = products.map((product: Product): JSX.Element => {
     return <ProductsGridItem key={product.id} {...product} />;
   });
 
-  return <div className="products-grid">{renderedGrid}</div>;
+  const grid = products.length ? productsGrid : loadingGrid;
+
+  return <div className="products-grid">{grid}</div>;
 }
