@@ -5,6 +5,15 @@ import { Asset } from '@chec/commerce.js/types/asset';
 export enum Slices {
   Catalog = 'catalog',
   Cart = 'cart',
+  System = 'system',
+}
+
+export interface SystemProps {
+  ui: {
+    header: {
+      showMenuDropdown: boolean;
+    };
+  };
 }
 
 export enum Operator {
