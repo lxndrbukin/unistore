@@ -14,6 +14,7 @@ export interface SystemProps {
       showMenuDropdown: boolean;
     };
   };
+  currentPath: string;
 }
 
 export enum Operator {

@@ -7,6 +7,7 @@ const initialState: SystemProps = {
       showMenuDropdown: false,
     },
   },
+  currentPath: '/',
 };
 
 const systemSlice = createSlice({
@@ -16,8 +17,11 @@ const systemSlice = createSlice({
     showDropdown(state: SystemProps, action: PayloadAction<boolean>): void {
       state.ui.header.showMenuDropdown = action.payload;
     },
+    setCurrentPath(state: SystemProps, action: PayloadAction<string>): void {
+      state.currentPath = action.payload;
+    },
   },
 });
 
 export default systemSlice.reducer;
-export const { showDropdown } = systemSlice.actions;
+export const { showDropdown, setCurrentPath } = systemSlice.actions;

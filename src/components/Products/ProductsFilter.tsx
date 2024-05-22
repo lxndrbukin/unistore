@@ -9,7 +9,7 @@ import ProductsFilterPriceInput from './ProductsFilterPriceInput';
 import { ChangeEvent } from 'react';
 
 export default function ProductsFilter(): JSX.Element {
-  const { categories } = useSelector(
+  const { products, categories } = useSelector(
     (state: RootState): CatalogProps => state.catalog
   );
 
@@ -19,7 +19,12 @@ export default function ProductsFilter(): JSX.Element {
     return category.children.map((subCategory: SubCategory): JSX.Element => {
       return (
         <li className="products-filter-subcategory">
-          <input id={subCategory.name} type="checkbox" />
+          <input
+            onChange={checkBox}
+            id={subCategory.name}
+            name={subCategory.name.toLowerCase()}
+            type="checkbox"
+          />
           <label htmlFor={subCategory.name}>{subCategory.name}</label>
         </li>
       );
@@ -27,14 +32,26 @@ export default function ProductsFilter(): JSX.Element {
   };
 
   const checkBox = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.name);
-    console.log(e.target.checked);
+    return products.map((product) => {
+      if (
+        e.target.checked &&
+        product.categories.some(
+          (category) => category.name.toLowerCase() === e.target.name
+        )
+      ) {
+        console.log(product);
+      }
+      return;
+    });
   };
 
   const renderedCategories = categories.map(
     (category: CatalogCategory): JSX.Element => {
       return (
-        <li className="products-filter-category-wrapper">
+        <li
+          key={category.name.toLowerCase()}
+          className="products-filter-category-wrapper"
+        >
           <div className="products-filter-category">
             <input
               onChange={checkBox}
