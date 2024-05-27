@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, getCategories, setCurrentPath } from '../store';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 export default function App(): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,6 +26,7 @@ export default function App(): JSX.Element {
           <Outlet />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
