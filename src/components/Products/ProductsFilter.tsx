@@ -1,14 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   RootState,
+  AppDispatch,
   CatalogCategory,
   SubCategory,
   CatalogProps,
+  selectCategory,
 } from '../../store';
 import ProductsFilterPriceInput from './ProductsFilterPriceInput';
 import { ChangeEvent } from 'react';
 
 export default function ProductsFilter(): JSX.Element {
+  const dispatch = useDispatch<AppDispatch>();
   const { products, categories } = useSelector(
     (state: RootState): CatalogProps => state.catalog
   );
@@ -32,16 +35,12 @@ export default function ProductsFilter(): JSX.Element {
   };
 
   const checkBox = (e: ChangeEvent<HTMLInputElement>) => {
-    return products.map((product) => {
-      if (
-        e.target.checked &&
-        product.categories.some(
-          (category) => category.name.toLowerCase() === e.target.name
-        )
-      ) {
-        console.log(product);
+    categories.map((category) => {
+      if (e.target.name === category.name.toLowerCase()) {
+        dispatch(
+          selectCategory({ category: e.target.name, checked: e.target.checked })
+        );
       }
-      return;
     });
   };
 

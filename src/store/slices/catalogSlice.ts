@@ -9,6 +9,7 @@ const initialState: CatalogProps = {
   categories: [],
   filter: {
     search: '',
+    categories: [],
     price: {
       min: undefined,
       max: undefined,
@@ -34,6 +35,22 @@ const catalogSlice = createSlice({
     setSearch(state: CatalogProps, action: PayloadAction<string>): void {
       state.filter.search = action.payload;
     },
+    selectCategory(
+      state: CatalogProps,
+      action: PayloadAction<{ category: string; checked: boolean }>
+    ): void {
+      if (
+        !state.filter.categories.includes(action.payload.category) &&
+        action.payload.checked
+      ) {
+        state.filter.categories.push(action.payload.category);
+      } else {
+        const filtered = state.filter.categories.filter(
+          (category) => category !== action.payload.category
+        );
+        state.filter.categories = filtered;
+      }
+    },
   },
   extraReducers: (builder): void => {
     builder.addCase(
@@ -58,4 +75,4 @@ const catalogSlice = createSlice({
 });
 
 export default catalogSlice.reducer;
-export const { setSearch, setPrice } = catalogSlice.actions;
+export const { setSearch, setPrice, selectCategory } = catalogSlice.actions;

@@ -38,6 +38,7 @@ export interface CatalogProps {
   categories: Array<CatalogCategory>;
   filter: {
     search: string;
+    categories: Array<string>;
     price: {
       min: number | undefined;
       max: number | undefined;
